@@ -20,6 +20,35 @@ function setDate(timestamp) {
   let day = days[now.getDay()];
   return `${day} ${hour}:${minute}`;
 }
+
+function showForecast() {
+  let forecastPart = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class ="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+                <div class="forecast-date">${day}</div>
+                <img
+                  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-night.png"
+                  alt="weather-img"
+                  width="36"
+                />
+                <div class="weather-app-temp">
+                  <span class="weather-app-temp-max">18°</span>
+                  <span class="weather-app-temp-min">12°</span>
+                </div>
+              </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecastPart.innerHTML = forecastHTML;
+}
+
 function showTemperature(response) {
   let temperaturePart = document.querySelector("#temp");
   celsiusPart = response.data.temperature.current;
@@ -76,5 +105,7 @@ fahrenhitPart.addEventListener("click", showFahrenhitTemperature);
 
 let celsiusTemperature = document.querySelector("#celsius");
 celsiusTemperature.addEventListener("click", showCelsiusTemperature);
+
+showForecast();
 
 displaySearch("Durban");
