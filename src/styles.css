@@ -63,3 +63,18 @@ a :hover {
 .weather-temperature .active:hover {
   text-decoration: none;
 }
+.weather-forecast-practice {
+  margin-top: 20px;
+  text-align: center;
+  color: black;
+}
+.forecast-date {
+  font-size: 16px;
+  opacity: 0.4;
+}
+.weather-app-temp-min {
+  opacity: 0.4;
+}
+.weather-app-temp {
+  font-size: 13px;
+}
