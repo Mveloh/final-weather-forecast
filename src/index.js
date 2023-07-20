@@ -21,7 +21,8 @@ function setDate(timestamp) {
   return `${day} ${hour}:${minute}`;
 }
 
-function showForecast() {
+function showForecast(response) {
+  //console.log(response.data.daily);
   let forecastPart = document.querySelector("#forecast");
 
   let forecastHTML = `<div class ="row">`;
@@ -48,8 +49,13 @@ function showForecast() {
 
   forecastPart.innerHTML = forecastHTML;
 }
-
+function showAllForecast(coordinates) {
+  let apiKey = "864c93f2e4tcc8176afdd913f0a2b0o2";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showForecast);
+}
 function showTemperature(response) {
+  showAllForecast(response.data.coordinates);
   let temperaturePart = document.querySelector("#temp");
   celsiusPart = response.data.temperature.current;
   temperaturePart.innerHTML = Math.round(celsiusPart);
@@ -105,7 +111,5 @@ fahrenhitPart.addEventListener("click", showFahrenhitTemperature);
 
 let celsiusTemperature = document.querySelector("#celsius");
 celsiusTemperature.addEventListener("click", showCelsiusTemperature);
-
-showForecast();
 
 displaySearch("Durban");
