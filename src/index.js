@@ -100,30 +100,10 @@ function searchForCity(event) {
   let cityInput = document.querySelector("#city-input");
   displaySearch(cityInput.value);
 }
-function showFahrenhitTemperature(event) {
-  event.preventDefault();
-  let temperaturePart = document.querySelector("#temp");
-  celsiusTemperature.classList.remove("active");
-  fahrenhitPart.classList.add("active");
-  let fahrenhitTemp = Math.round((celsiusPart * 9) / 5 + 32);
-  temperaturePart.innerHTML = fahrenhitTemp;
-}
-function showCelsiusTemperature(event) {
-  event.preventDefault();
-  fahrenhitPart.classList.remove("active");
-  celsiusTemperature.classList.add("active");
-  let temperaturePart = document.querySelector("#temp");
-  temperaturePart.innerHTML = Math.round(celsiusPart);
-}
+
 let celsiusPart = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchForCity);
-
-let fahrenhitPart = document.querySelector("#fahrenhit");
-fahrenhitPart.addEventListener("click", showFahrenhitTemperature);
-
-let celsiusTemperature = document.querySelector("#celsius");
-celsiusTemperature.addEventListener("click", showCelsiusTemperature);
 
 displaySearch("Durban");
